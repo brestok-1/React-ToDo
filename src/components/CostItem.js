@@ -1,6 +1,14 @@
-function CostItem(){
+import './CostItem.css'
+
+function CostItem() {
     return (
-        <h2>Elements</h2>
+        <div className={'cost-item'}>
+            <div>12.12.2021</div>
+            <div className={'cost-item__description'}>
+                <h2>Fridge</h2>
+                <div className={'cost-item__price'}>$999</div>
+            </div>
+        </div>
     )
 }
 
