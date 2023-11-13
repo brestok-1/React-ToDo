@@ -2,7 +2,7 @@ import './CostForm.css'
 import {useState} from "react";
 
 function CostForm(props) {
-    const [name, setName] = useState('')
+    const [name, setName] = useState('') // Используем, когда просто объект изменяется и на нет необходимости знать его предыдущее состояние
     const [amount, setAmount] = useState('')
     const [date, setDate] = useState('')
 
@@ -29,10 +29,10 @@ function CostForm(props) {
         setDate(event.target.value)
     }
 
-    function submitHandler(event){
+    function submitHandler(event) {
         event.preventDefault()
         const costData = {
-            name: name,
+            description: name,
             amount: amount,
             date: new Date(date),
         }
@@ -47,7 +47,7 @@ function CostForm(props) {
             <div className={'new-cost__controls'}>
                 <div className="new-cost__control">
                     <label>Name</label>
-                    <input type="text" onChange={changeNameHandler} value={name} />
+                    <input type="text" onChange={changeNameHandler} value={name}/>
                 </div>
                 <div className="new-cost__control">
                     <label>Amount</label>
@@ -55,10 +55,11 @@ function CostForm(props) {
                 </div>
                 <div className="new-cost__control">
                     <label>Date</label>
-                    <input type="date" min={'2019-01-01'} step={'2023-13-11'} onChange={changeDateHandler} value={date}/>
+                    <input type="date" min={'2019-01-01'} step={'2023-13-11'} onChange={changeDateHandler}
+                           value={date}/>
                 </div>
                 <div className={'new-cost__actions'}>
-                    <button type={"submit"} >Add cost</button>
+                    <button type={"submit"}>Add cost</button>
                 </div>
             </div>
         </form>
