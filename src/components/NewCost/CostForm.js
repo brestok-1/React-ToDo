@@ -5,20 +5,10 @@ function CostForm(props) {
     const [name, setName] = useState('') // Используем, когда просто объект изменяется и на нет необходимости знать его предыдущее состояние
     const [amount, setAmount] = useState('')
     const [date, setDate] = useState('')
+    // const [isOpened, setIsOpened] = useState(false)
 
-    // const [userInput, setUserInput] = useState({
-    //     name: '',
-    //     amount: '',
-    //     date: ''
-    // })
     function changeNameHandler(event) {
         setName(event.target.value)
-        // setUserInput((prevState) => {
-        //     return {
-        //         ...prevState,
-        //         name: event.target.value
-        //     }
-        // })
     }
 
     function changeAmountHandler(event) {
@@ -40,8 +30,15 @@ function CostForm(props) {
         setName('')
         setAmount('')
         setDate('')
+        // setIsOpened(false)
     }
 
+    function cancelHandler() {
+        props.onCansel()
+        setDate('')
+        setAmount('')
+        setName('')
+    }
     return (
         <form onSubmit={submitHandler}>
             <div className={'new-cost__controls'}>
@@ -60,6 +57,7 @@ function CostForm(props) {
                 </div>
                 <div className={'new-cost__actions'}>
                     <button type={"submit"}>Add cost</button>
+                    <button type={"button"} onClick={cancelHandler}>Cancel</button>
                 </div>
             </div>
         </form>
