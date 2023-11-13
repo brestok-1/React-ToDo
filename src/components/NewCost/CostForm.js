@@ -1,7 +1,7 @@
 import './CostForm.css'
 import {useState} from "react";
 
-function CostForm() {
+function CostForm(props) {
     const [name, setName] = useState('')
     const [amount, setAmount] = useState('')
     const [date, setDate] = useState('')
@@ -11,7 +11,6 @@ function CostForm() {
     //     amount: '',
     //     date: ''
     // })
-
     function changeNameHandler(event) {
         setName(event.target.value)
         // setUserInput((prevState) => {
@@ -23,7 +22,6 @@ function CostForm() {
     }
 
     function changeAmountHandler(event) {
-        console.log(amount)
         setAmount(event.target.value)
     }
 
@@ -38,7 +36,7 @@ function CostForm() {
             amount: amount,
             date: new Date(date),
         }
-        console.log(costData)
+        props.onSaveCostData(costData)
         setName('')
         setAmount('')
         setDate('')
@@ -56,7 +54,7 @@ function CostForm() {
                     <input type="number" min={0.01} step={0.01} onChange={changeAmountHandler} value={amount}/>
                 </div>
                 <div className="new-cost__control">
-                    <label>Name</label>
+                    <label>Date</label>
                     <input type="date" min={'2019-01-01'} step={'2023-13-11'} onChange={changeDateHandler} value={date}/>
                 </div>
                 <div className={'new-cost__actions'}>
